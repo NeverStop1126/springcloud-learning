@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -29,7 +30,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public CommonResult<User> getUser(@PathVariable Long id) {
+    public CommonResult<User> getUser(@PathVariable Long id, HttpServletRequest request) {
+        request.getHeaderNames();
         User user = userService.getUser(id);
         LOGGER.info("根据id获取用户信息，用户名称为：{}",user.getUsername());
         return new CommonResult<>(user);

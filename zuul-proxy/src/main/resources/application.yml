@@ -9,6 +9,8 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8001/eureka/
+
+
 zuul:
   routes: #给服务配置路由
     user-service:
@@ -21,9 +23,22 @@ zuul:
   add-host-header: true #设置为true重定向是会添加host请求头
   PreLogFilter:
     pre:
-      disable: true #控制是否启用过滤器
+      disable: false #控制是否启用过滤器
 management:
   endpoints:
     web:
       exposure:
         include: 'routes'
+  EnableZuulProxy
+
+hystrix:
+  command: #用于控制HystrixCommand的行为
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000 #配置HystrixCommand执行的超时时间，执行超过该时间会进行服务降级处理
+
+ribbon: #全局配置
+  ConnectTimeout: 1000 #服务请求连接超时时间（毫秒）
+  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）

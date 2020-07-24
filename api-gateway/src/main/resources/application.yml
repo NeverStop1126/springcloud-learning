@@ -10,3 +10,4 @@ spring:
           uri: ${service-url.user-service}/user/{id} #匹配后路由地址
           predicates: # 断言，路径相匹配的进行路由
             - Path=/user/{id}
+            - Method=GET

@@ -3,5 +3,7 @@ server:
 spring:
   application:
     name: oauth2-jwt-service
-#  redis: #redis相关配置
-#    password: 123456 #有密码时设置
+  redis:
+    host: 172.21.205.34 #redis相关配置
+    port: 6379
+#    password:  #有密码时设置
