@@ -9,11 +9,11 @@ spring:
         tx-service-group: fsp_tx_group
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: a.usts.top:8848
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     password: root
-    url: jdbc:mysql://localhost:3306/seat-order
+    url: jdbc:mysql://172.21.51.17:3306/seat-order
     username: root
 feign:
   hystrix:
